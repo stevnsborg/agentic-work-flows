@@ -1,0 +1,24 @@
+{
+  "sources": {
+    "JuliusBrussee/caveman": {
+      "ref": "main",
+      "commit": "bad48a0e1df55e05e3f52249afa35ecc1909ee76",
+      "synced": "2026-10-19"
+    },
+    "anthropics/skills": {
+      "ref": "main",
+      "commit": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
+      "synced": "2026-10-19"
+    },
+    "blader/humanizer": {
+      "ref": "main",
+      "commit": "8c307f367c91bd974002f10f2be2965d642c13df",
+      "synced": "2026-10-19"
+    },
+    "mattpocock/skills": {
+      "ref": "main",
+      "commit": "49dd158d1076134a641b33efb035946536778336",
+      "synced": "2026-10-19"
+    }
+  }
+}

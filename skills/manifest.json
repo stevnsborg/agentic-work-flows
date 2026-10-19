@@ -1,0 +1,54 @@
+{
+  "$comment": "Third-party skill sources. Edit this file, then run `python3 scripts/sync_skills.py` (add --update to bump to the latest upstream commit).",
+  "sources": [
+    {
+      "repo": "mattpocock/skills",
+      "ref": "main",
+      "license": "MIT",
+      "license_files": ["LICENSE"],
+      "skills": [
+        { "name": "grill-me", "path": "skills/productivity/grill-me" },
+        { "name": "handoff", "path": "skills/productivity/handoff" },
+        { "name": "tdd", "path": "skills/engineering/tdd" },
+        { "name": "to-spec", "path": "skills/engineering/to-spec" },
+        { "name": "code-review", "path": "skills/engineering/code-review", "alias": "mp-code-review" },
+        { "name": "diagnosing-bugs", "path": "skills/engineering/diagnosing-bugs" }
+      ]
+    },
+    {
+      "repo": "JuliusBrussee/caveman",
+      "ref": "main",
+      "license": "Apache-2.0",
+      "license_files": ["LICENSE", "NOTICE"],
+      "skills": [
+        { "name": "caveman", "path": "skills/caveman" },
+        { "name": "caveman-commit", "path": "skills/caveman-commit" },
+        { "name": "caveman-review", "path": "skills/caveman-review" },
+        { "name": "caveman-compress", "path": "skills/caveman-compress" }
+      ]
+    },
+    {
+      "repo": "blader/humanizer",
+      "ref": "main",
+      "license": "MIT",
+      "license_files": ["LICENSE"],
+      "skills": [
+        { "name": "humanizer", "path": ".", "include": ["SKILL.md", "agents", "scripts"] }
+      ]
+    },
+    {
+      "repo": "anthropics/skills",
+      "ref": "main",
+      "license": "Apache-2.0 (vendored skills); proprietary (document skills)",
+      "license_files": [],
+      "skills": [
+        { "name": "skill-creator", "path": "skills/skill-creator" },
+        { "name": "mcp-builder", "path": "skills/mcp-builder" },
+        { "name": "docx", "path": "skills/docx", "vendor": false, "note": "Proprietary license; install with `npx skills add anthropics/skills --skill docx`" },
+        { "name": "pdf", "path": "skills/pdf", "vendor": false, "note": "Proprietary license; install with `npx skills add anthropics/skills --skill pdf`" },
+        { "name": "pptx", "path": "skills/pptx", "vendor": false, "note": "Proprietary license; install with `npx skills add anthropics/skills --skill pptx`" },
+        { "name": "xlsx", "path": "skills/xlsx", "vendor": false, "note": "Proprietary license; install with `npx skills add anthropics/skills --skill xlsx`" }
+      ]
+    }
+  ]
+}
