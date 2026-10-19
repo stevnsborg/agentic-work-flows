@@ -1,0 +1,22 @@
+{
+  "name": "stevnsborg",
+  "owner": {
+    "name": "Mads Stevnsborg"
+  },
+  "description": "Skills, agents and agentic workflows library",
+  "plugins": [
+    {
+      "name": "awf",
+      "displayName": "Agentic Work Flows",
+      "source": "./",
+      "description": "Vendored third-party skills (grill-me, caveman, humanizer, ...) plus custom skills and agents.",
+      "license": "MIT (repo); vendored skills keep their upstream licenses",
+      "skills": [
+        "./skills/third-party/mattpocock__skills/",
+        "./skills/third-party/JuliusBrussee__caveman/",
+        "./skills/third-party/blader__humanizer/",
+        "./skills/third-party/anthropics__skills/"
+      ]
+    }
+  ]
+}

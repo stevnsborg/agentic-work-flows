@@ -15,5 +15,7 @@ workflows/
 Start from the template:
 
 ```bash
-cp -r workflows/_template workflows/<workflow-name>
+cp -r templates/workflow workflows/<workflow-name>
 ```
+
+Claude Code workflow scripts (`.js` files) placed directly in this folder ship in the `awf` plugin.

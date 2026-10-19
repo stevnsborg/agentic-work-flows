@@ -5,9 +5,9 @@ Skills written for this repo. Each skill is a folder with a `SKILL.md`. That fil
 To add one:
 
 ```bash
-cp -r skills/custom/_template skills/custom/<skill-name>
+cp -r templates/skill skills/custom/<skill-name>
 # edit SKILL.md, set `name: <skill-name>`
 python3 scripts/link.py && python3 scripts/validate.py
 ```
 
-Folders whose name starts with `_` are templates. They are never linked into `.claude/`.
+Every folder here with a `SKILL.md` ships in the `awf` plugin, so keep drafts out of this folder.

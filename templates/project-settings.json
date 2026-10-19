@@ -1,0 +1,10 @@
+{
+  "extraKnownMarketplaces": {
+    "stevnsborg": {
+      "source": { "source": "github", "repo": "stevnsborg/agentic-work-flows" }
+    }
+  },
+  "enabledPlugins": {
+    "awf@stevnsborg": true
+  }
+}
