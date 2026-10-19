@@ -18,4 +18,6 @@ python3 scripts/link.py && python3 scripts/validate.py
 claude plugin validate .   # if the claude CLI is available
 ```
 
+To build claude.ai upload ZIPs: `python3 scripts/package_skills.py` (output in `dist/`, git-ignored).
+
 CI (`.github/workflows/validate.yml`) runs the Python checks and fails if the generated files are stale.

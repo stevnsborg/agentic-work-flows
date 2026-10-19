@@ -17,6 +17,15 @@ You can also run `./scripts/install.sh` from a clone of this repo. Run `/plugin 
 
 **In a project, including cloud sessions on claude.ai/code:** cloud sessions don't read your personal settings. Merge [`templates/project-settings.json`](templates/project-settings.json) into that repo's `.claude/settings.json`. Anyone who opens the project, including cloud sessions, is then prompted to install the marketplace with the plugin enabled.
 
+**In the claude.ai app (web, desktop, mobile chat):** claude.ai doesn't use plugin marketplaces, so skills are uploaded one by one. Build the ZIPs:
+
+```bash
+python3 scripts/package_skills.py                    # all skills -> dist/claude-ai/<name>.zip
+python3 scripts/package_skills.py grill-me humanizer  # just these
+```
+
+Then upload each ZIP at [Customize > Skills](https://claude.ai/customize/skills) and turn it on. The script checks the claude.ai rules first: the folder name must match `name`, names must be lowercase with hyphens, and descriptions must be at most 1,024 characters. Agents and workflows are Claude Code only.
+
 **Inside this repo:** nothing to install. The `.claude/skills` symlinks load everything without the `awf:` prefix.
 
 ## Layout
@@ -42,6 +51,7 @@ scripts/
   link.py                  # rebuild .claude/ symlinks and the marketplace file
   validate.py              # frontmatter + link checks (also run in CI)
   install.sh               # install the plugin into your user settings
+  package_skills.py        # build per-skill ZIPs for upload to claude.ai
 ```
 
 ## Installed skills
