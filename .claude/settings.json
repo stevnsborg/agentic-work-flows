@@ -4,7 +4,8 @@
     "allow": [
       "Bash(python3 scripts/sync_skills.py:*)",
       "Bash(python3 scripts/link.py)",
-      "Bash(python3 scripts/validate.py)"
+      "Bash(python3 scripts/validate.py)",
+      "Bash(python3 scripts/package_skills.py:*)"
     ]
   }
 }

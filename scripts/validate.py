@@ -59,7 +59,7 @@ def main():
             else:
                 errors.append(f"{d.relative_to(ROOT)}: missing SKILL.md")
 
-    for f in (ROOT / "agents" / "custom").glob("*.md"):
+    for f in (ROOT / "agents").glob("*.md"):
         check_frontmatter(f)
 
     for link_dir in (ROOT / ".claude" / "skills", ROOT / ".claude" / "agents"):

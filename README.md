@@ -2,25 +2,56 @@
 
 This repo holds the skills, agents and workflows used across this account's projects. Third-party skills are vendored and pinned. Custom skills, agents and workflows live next to them.
 
+## Use it with Claude Code
+
+The repo is a Claude Code **plugin marketplace** called `stevnsborg`. It publishes the whole library as one plugin, `awf`. Once you install it, Claude sees every skill and agent in every project. It picks a skill automatically when your request matches the skill's description, and you can also call one directly, for example `/awf:grill-me`.
+
+**On your machine (CLI, desktop app, IDE):** run this once, inside Claude Code:
+
+```
+/plugin marketplace add stevnsborg/agentic-work-flows
+/plugin install awf@stevnsborg
+```
+
+You can also run `./scripts/install.sh` from a clone of this repo. Run `/plugin marketplace update stevnsborg` to pull new skills later. If the repo is private, your local git needs access to it.
+
+**In a project, including cloud sessions on claude.ai/code:** cloud sessions don't read your personal settings. Merge [`templates/project-settings.json`](templates/project-settings.json) into that repo's `.claude/settings.json`. Anyone who opens the project, including cloud sessions, is then prompted to install the marketplace with the plugin enabled.
+
+**In the claude.ai app (web, desktop, mobile chat):** claude.ai doesn't use plugin marketplaces, so skills are uploaded one by one. Build the ZIPs:
+
+```bash
+python3 scripts/package_skills.py                    # all skills -> dist/claude-ai/<name>.zip
+python3 scripts/package_skills.py grill-me humanizer  # just these
+```
+
+Then upload each ZIP at [Customize > Skills](https://claude.ai/customize/skills) and turn it on. The script checks the claude.ai rules first: the folder name must match `name`, names must be lowercase with hyphens, and descriptions must be at most 1,024 characters. Agents and workflows are Claude Code only.
+
+**Inside this repo:** nothing to install. The `.claude/skills` symlinks load everything without the `awf:` prefix.
+
 ## Layout
 
 ```
+.claude-plugin/
+  marketplace.json         # generated: publishes the library as the `awf` plugin
 skills/
   manifest.json            # which third-party skills to vendor, and from where
   skills.lock.json         # pinned upstream commit per source (generated)
   third-party/<owner>__<repo>/<skill>/   # vendored copies; never edit by hand
-  custom/<skill>/          # skills written here (start from custom/_template)
+  custom/<skill>/          # skills written here
 agents/
-  custom/<agent>.md        # subagent definitions (start from custom/_template.md)
+  <agent>.md               # subagent definitions
 workflows/
   <workflow>/README.md     # multi-step processes combining skills + agents
+templates/                 # starters for skills, agents, workflows, project settings
 .claude/
   skills/, agents/         # generated symlinks so Claude Code picks everything up in this repo
   settings.json
 scripts/
   sync_skills.py           # vendor / update third-party skills
-  link.py                  # rebuild .claude/ symlinks
+  link.py                  # rebuild .claude/ symlinks and the marketplace file
   validate.py              # frontmatter + link checks (also run in CI)
+  install.sh               # install the plugin into your user settings
+  package_skills.py        # build per-skill ZIPs for upload to claude.ai
 ```
 
 ## Installed skills
@@ -43,7 +74,7 @@ scripts/
 
 **Listed but not vendored:** Anthropic's `docx`, `pdf`, `pptx` and `xlsx` are proprietary ("all rights reserved"), so this repo can't redistribute them. They are recorded in `skills/manifest.json` with `"vendor": false`. Install them yourself with `npx skills add anthropics/skills --skill <name>`.
 
-**Note on `mp-code-review`:** it is linked under a different name so it doesn't shadow Claude Code's built-in `/code-review`. Its upstream frontmatter still says `name: code-review`.
+**Note on `code-review`:** inside this repo it is linked as `mp-code-review` so it doesn't shadow Claude Code's built-in `/code-review`. In the plugin it is namespaced as `awf:code-review`, so there's no clash.
 
 ## Common tasks
 
@@ -55,16 +86,10 @@ python3 scripts/sync_skills.py --update && python3 scripts/link.py && python3 sc
 python3 scripts/sync_skills.py --source owner/repo && python3 scripts/link.py
 
 # Add a custom skill / agent / workflow
-cp -r skills/custom/_template skills/custom/<name>
-cp agents/custom/_template.md agents/custom/<name>.md
-cp -r workflows/_template workflows/<name>
+cp -r templates/skill skills/custom/<name>
+cp templates/agent.md agents/<name>.md
+cp -r templates/workflow workflows/<name>
 python3 scripts/link.py && python3 scripts/validate.py
 ```
 
-## Using these in another project
-
-Inside this repo, Claude Code picks everything up through `.claude/`. To use the skills elsewhere:
-
-- **Per user:** symlink a skill folder into `~/.claude/skills/`, for example
-  `ln -s "$PWD/skills/third-party/mattpocock__skills/grill-me" ~/.claude/skills/grill-me`.
-- **Per project:** copy the skill folder into that project's `.claude/skills/`.
+Push to `main`, then run `/plugin marketplace update stevnsborg` wherever the plugin is installed to pick up the changes.

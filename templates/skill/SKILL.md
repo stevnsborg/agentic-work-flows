@@ -6,7 +6,7 @@ description: One or two sentences saying what this skill does and WHEN to use it
 
 # My Skill
 
-Copy this folder to `skills/custom/<skill-name>/`, rename `name` above to match
+Copy this folder (`templates/skill`) to `skills/custom/<skill-name>/`, rename `name` above to match
 the folder, then run `python3 scripts/link.py`.
 
 ## When to use
