@@ -1,0 +1,3 @@
+# Keep large or sensitive originals out of git if you prefer to store them in Drive
+# inbox/*.pdf
+.DS_Store

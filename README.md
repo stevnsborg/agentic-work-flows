@@ -72,6 +72,21 @@ scripts/
 | `skill-creator` | [anthropics/skills](https://github.com/anthropics/skills) | Apache-2.0 | Create, evaluate and improve skills |
 | `mcp-builder` | anthropics/skills | Apache-2.0 | Guide for building MCP servers |
 
+## Custom skills and agents
+
+**Owners' association assistant** (see [workflows/owners-association](workflows/owners-association/README.md) for setup and daily use):
+
+| Name | Kind | What it does |
+|---|---|---|
+| `oa-secretary` | agent | Main agent: secretary/administrator for an owners' association board. Run with `claude --agent awf:oa-secretary` |
+| `oa-reader` | agent | Read-only subagent that digests long threads, PDFs and accounts into a short sourced summary |
+| `oa-workspace` | skill | File-based memory for the association: layout, template, what goes where, session close |
+| `oa-correspondence` | skill | Emails and letters to owners, contractors and the administrator (drafts only) |
+| `oa-minutes` | skill | Live notes, minutes, decisions and action items, summaries |
+| `oa-documents` | skill | Notices of general meeting, agendas, proposals, annual report, approval letters |
+| `oa-finance` | skill | Budget vs actual, forecasts, draft budgets, cost allocation by share, quote comparison |
+| `oa-work-orders` | skill | CSV register of repairs and apartment changes with overview, overdue and stale reports |
+
 **Listed but not vendored:** Anthropic's `docx`, `pdf`, `pptx` and `xlsx` are proprietary ("all rights reserved"), so this repo can't redistribute them. They are recorded in `skills/manifest.json` with `"vendor": false`. Install them yourself with `npx skills add anthropics/skills --skill <name>`.
 
 **Note on `code-review`:** inside this repo it is linked as `mp-code-review` so it doesn't shadow Claude Code's built-in `/code-review`. In the plugin it is namespaced as `awf:code-review`, so there's no clash.

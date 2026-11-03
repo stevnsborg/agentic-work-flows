@@ -15,7 +15,12 @@
         "./skills/third-party/mattpocock__skills/",
         "./skills/third-party/JuliusBrussee__caveman/",
         "./skills/third-party/blader__humanizer/",
-        "./skills/third-party/anthropics__skills/"
+        "./skills/third-party/anthropics__skills/",
+        "./skills/custom/"
+      ],
+      "agents": [
+        "./agents/oa-reader.md",
+        "./agents/oa-secretary.md"
       ]
     }
   ]
