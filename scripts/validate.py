@@ -4,7 +4,6 @@
 - every skill folder (third-party and custom) has a SKILL.md with `name` and `description` frontmatter
 - every custom agent has `name` and `description` frontmatter
 - every vendored skill in the manifest exists on disk and its source is in the lock file
-- every symlink in .claude/skills and .claude/agents resolves
 """
 
 import json
@@ -61,12 +60,6 @@ def main():
 
     for f in (ROOT / "agents").glob("*.md"):
         check_frontmatter(f)
-
-    for link_dir in (ROOT / ".claude" / "skills", ROOT / ".claude" / "agents"):
-        if link_dir.exists():
-            for entry in link_dir.iterdir():
-                if entry.is_symlink() and not entry.exists():
-                    errors.append(f"{entry.relative_to(ROOT)}: broken symlink")
 
     if errors:
         print("\n".join(errors))

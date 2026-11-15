@@ -18,5 +18,4 @@ jobs:
       - name: Check generated files are up to date
         run: |
           python3 scripts/link.py
-          git status --porcelain .claude .claude-plugin
-          test -z "$(git status --porcelain .claude .claude-plugin)"
+          test -z "$(git status --porcelain .claude-plugin)"

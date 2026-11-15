@@ -11,7 +11,7 @@
         { "name": "handoff", "path": "skills/productivity/handoff" },
         { "name": "tdd", "path": "skills/engineering/tdd" },
         { "name": "to-spec", "path": "skills/engineering/to-spec" },
-        { "name": "code-review", "path": "skills/engineering/code-review", "alias": "mp-code-review" },
+        { "name": "code-review", "path": "skills/engineering/code-review" },
         { "name": "diagnosing-bugs", "path": "skills/engineering/diagnosing-bugs" }
       ]
     },

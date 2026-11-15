@@ -2,3 +2,7 @@ __pycache__/
 *.pyc
 .DS_Store
 dist/
+
+# Generated symlinks are no longer used; the plugin install loads everything
+.claude/skills/
+.claude/agents/
