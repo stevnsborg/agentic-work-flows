@@ -12,15 +12,33 @@
       "description": "Vendored third-party skills (grill-me, caveman, humanizer, ...) plus custom skills and agents.",
       "license": "MIT (repo); vendored skills keep their upstream licenses",
       "skills": [
-        "./skills/third-party/mattpocock__skills/",
-        "./skills/third-party/JuliusBrussee__caveman/",
-        "./skills/third-party/blader__humanizer/",
-        "./skills/third-party/anthropics__skills/",
-        "./skills/custom/"
+        "./skills/third-party/mattpocock__skills/grill-me/",
+        "./skills/third-party/mattpocock__skills/handoff/",
+        "./skills/third-party/mattpocock__skills/tdd/",
+        "./skills/third-party/mattpocock__skills/to-spec/",
+        "./skills/third-party/mattpocock__skills/code-review/",
+        "./skills/third-party/mattpocock__skills/diagnosing-bugs/",
+        "./skills/third-party/JuliusBrussee__caveman/caveman/",
+        "./skills/third-party/JuliusBrussee__caveman/caveman-commit/",
+        "./skills/third-party/JuliusBrussee__caveman/caveman-review/",
+        "./skills/third-party/JuliusBrussee__caveman/caveman-compress/",
+        "./skills/third-party/blader__humanizer/humanizer/",
+        "./skills/third-party/anthropics__skills/skill-creator/",
+        "./skills/third-party/anthropics__skills/mcp-builder/",
+        "./skills/custom/feature-workflow/",
+        "./skills/custom/oa-correspondence/",
+        "./skills/custom/oa-documents/",
+        "./skills/custom/oa-finance/",
+        "./skills/custom/oa-minutes/",
+        "./skills/custom/oa-work-orders/",
+        "./skills/custom/oa-workspace/",
+        "./skills/custom/pre-pr-check/"
       ],
       "agents": [
         "./agents/bug-investigator.md",
         "./agents/code-reviewer.md",
+        "./agents/oa-reader.md",
+        "./agents/oa-secretary.md",
         "./agents/spec-planner.md"
       ]
     }

@@ -71,9 +71,10 @@ def rel(path):
 def write_marketplace(manifest):
     # The plugin's source is the repo root, so list exactly which folders hold
     # skills; anything else at the root (templates, scripts) is never loaded.
-    skill_dirs = [rel(base) for base, _ in vendored_sources(manifest)]
-    if custom_skills():
-        skill_dirs.append(rel(ROOT / "skills" / "custom"))
+    # One entry per skill folder (not per container folder): some loaders, such as
+    # the Claude desktop app, don't expand a folder of skills.
+    skill_dirs = [rel(base / s["name"]) for base, skills in vendored_sources(manifest) for s in skills]
+    skill_dirs += [rel(d) for d in custom_skills()]
     plugin = {
         "name": PLUGIN_NAME,
         "displayName": "Agentic Work Flows",
